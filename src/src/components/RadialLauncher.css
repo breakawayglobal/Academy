@@ -1,0 +1,84 @@
+.radial-launcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.radial-launcher__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.radial-launcher__wedge {
+  fill: #171a24;
+  stroke: #0a0c12;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: fill 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+  transform-origin: 300px 300px;
+}
+
+.radial-launcher__wedge.is-hovered {
+  fill: color-mix(in srgb, var(--accent) 28%, #171a24);
+  filter: url(#segGlow) drop-shadow(0 0 14px var(--accent));
+}
+
+.radial-launcher__tick {
+  fill: #5b6273;
+  font-size: 13px;
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.radial-launcher__icon {
+  font-size: 34px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.radial-launcher__label {
+  fill: #e7e9ee;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.radial-launcher__hub {
+  cursor: pointer;
+}
+
+.radial-launcher__hub-icon {
+  font-size: 32px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.radial-launcher__hub-percent {
+  fill: #ff8a3d;
+  font-size: 24px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-family: 'Inter', system-ui, sans-serif;
+  pointer-events: none;
+}
+
+.radial-launcher__hub-caption {
+  fill: #9a9fae;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-family: 'Inter', system-ui, sans-serif;
+  pointer-events: none;
+}
