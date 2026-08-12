@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import RadialLauncher from '../components/RadialLauncher';
 import { topics } from '../data/topics';
+import { useAuth } from '../context/AuthContext';
 import './Dashboard.css';
 
 export default function Dashboard() {
+  const { user, signOut } = useAuth();
+
   return (
     <div className="dashboard">
       <header className="dashboard__header">
@@ -12,6 +15,12 @@ export default function Dashboard() {
           <h1 className="dashboard__title">Your Learning Wheel</h1>
         </div>
         <p className="dashboard__hint">Select a topic on the wheel to begin, or jump straight in below.</p>
+        <p className="dashboard__account">
+          {user?.email}
+          <button type="button" className="dashboard__signout" onClick={signOut}>
+            Sign out
+          </button>
+        </p>
       </header>
 
       <RadialLauncher topics={topics} />

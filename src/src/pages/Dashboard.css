@@ -37,6 +37,30 @@
   margin: 0;
 }
 
+.dashboard__account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #9a9fae;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+
+.dashboard__signout {
+  background: none;
+  border: 1px solid #262b3a;
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: #f4f5f7;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dashboard__signout:hover {
+  border-color: #ff8a3d;
+}
+
 .dashboard__list {
   width: 100%;
   display: grid;
