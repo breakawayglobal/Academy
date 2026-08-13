@@ -5,14 +5,15 @@ import { useAuth } from '../context/AuthContext';
 import './Dashboard.css';
 
 export default function Dashboard() {
-  const { user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
+  const firstName = profile?.full_name?.trim().split(/\s+/)[0] || 'back';
 
   return (
     <div className="dashboard">
       <header className="dashboard__header">
         <div>
-          <p className="dashboard__eyebrow">Welcome back</p>
-          <h1 className="dashboard__title">Your Learning Wheel</h1>
+          <p className="dashboard__eyebrow">Your Learning Wheel</p>
+          <h1 className="dashboard__title">Welcome back, {firstName}</h1>
         </div>
         <p className="dashboard__hint">Select a topic on the wheel to begin, or jump straight in below.</p>
         <p className="dashboard__account">

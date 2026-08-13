@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabaseClient';
 import welcomeAudio from '../assets/welcome.mp3';
 import './Login.css';
 
 export default function Login() {
-  const { user, signIn, signUp } = useAuth();
+  const { user, profile, profileLoading, signIn, signUp } = useAuth();
   const location = useLocation();
   const [mode, setMode] = useState('sign-in');
   const [email, setEmail] = useState('');
@@ -15,8 +16,9 @@ export default function Login() {
   const [submitting, setSubmitting] = useState(false);
 
   if (user) {
+    if (profileLoading) return null;
     const from = location.state?.from?.pathname || '/';
-    return <Navigate to={from} replace />;
+    return <Navigate to={profile ? from : '/onboarding'} replace />;
   }
 
   async function handleSubmit(e) {
@@ -25,7 +27,7 @@ export default function Login() {
     setMessage('');
     setSubmitting(true);
 
-    const { error: authError } =
+    const { data, error: authError } =
       mode === 'sign-in' ? await signIn(email, password) : await signUp(email, password);
 
     setSubmitting(false);
@@ -41,7 +43,17 @@ export default function Login() {
       return;
     }
 
-    new Audio(welcomeAudio).play().catch(() => {});
+    const { data: existingProfile } = await supabase
+      .from('profiles')
+      .select('full_name, welcome_audio_url')
+      .eq('id', data.user.id)
+      .maybeSingle();
+
+    if (existingProfile?.welcome_audio_url) {
+      new Audio(existingProfile.welcome_audio_url).play().catch(() => {});
+    } else if (existingProfile) {
+      new Audio(welcomeAudio).play().catch(() => {});
+    }
   }
 
   return (
