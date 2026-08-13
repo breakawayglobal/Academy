@@ -15,8 +15,14 @@
   gap: 8px;
 }
 
+.dashboard__logo {
+  width: 48px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .dashboard__eyebrow {
-  color: #ff8a3d;
+  color: var(--brand-teal);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -58,7 +64,7 @@
 }
 
 .dashboard__signout:hover {
-  border-color: #ff8a3d;
+  border-color: var(--brand-teal);
 }
 
 .dashboard__list {

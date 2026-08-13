@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabaseClient';
+import logo from '../assets/logo.svg';
 import './Onboarding.css';
 
 export default function Onboarding() {
@@ -65,6 +66,7 @@ export default function Onboarding() {
   return (
     <div className="onboarding">
       <form className="onboarding__card" onSubmit={handleSubmit}>
+        <img src={logo} alt="" className="onboarding__logo" />
         <p className="onboarding__eyebrow">One last step</p>
         <h1 className="onboarding__title">Tell us about you</h1>
         <p className="onboarding__hint">This personalizes your dashboard and welcome greeting.</p>

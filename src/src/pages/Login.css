@@ -18,13 +18,20 @@
   border: 1px solid #262b3a;
 }
 
+.login__logo {
+  width: 56px;
+  height: auto;
+  margin: 0 auto 4px;
+}
+
 .login__eyebrow {
-  color: #ff8a3d;
+  color: var(--brand-teal);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin: 0;
+  text-align: center;
 }
 
 .login__title {
@@ -32,6 +39,7 @@
   font-weight: 800;
   margin: 0 0 8px;
   color: #f4f5f7;
+  text-align: center;
 }
 
 .login__field {
@@ -54,7 +62,7 @@
 
 .login__field input:focus {
   outline: none;
-  border-color: #ff8a3d;
+  border-color: var(--brand-teal);
 }
 
 .login__error {
@@ -74,7 +82,7 @@
   padding: 11px;
   border-radius: 10px;
   border: none;
-  background: #ff8a3d;
+  background: var(--brand-gradient);
   color: #0b0c10;
   font-weight: 700;
   font-size: 14px;

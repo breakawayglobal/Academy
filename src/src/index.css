@@ -2,6 +2,10 @@
   color-scheme: dark;
   --bg: #0b0c10;
   --text: #f4f5f7;
+  --brand-blue: #5468d8;
+  --brand-teal: #2fc6c4;
+  --brand-mint: #4fe0b8;
+  --brand-gradient: linear-gradient(135deg, var(--brand-blue), var(--brand-teal));
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

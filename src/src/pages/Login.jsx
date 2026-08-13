@@ -3,6 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabaseClient';
 import welcomeAudio from '../assets/welcome.mp3';
+import logo from '../assets/logo.svg';
 import './Login.css';
 
 export default function Login() {
@@ -59,6 +60,7 @@ export default function Login() {
   return (
     <div className="login">
       <form className="login__card" onSubmit={handleSubmit}>
+        <img src={logo} alt="" className="login__logo" />
         <p className="login__eyebrow">{mode === 'sign-in' ? 'Welcome back' : 'Get started'}</p>
         <h1 className="login__title">{mode === 'sign-in' ? 'Sign in' : 'Create your account'}</h1>
 

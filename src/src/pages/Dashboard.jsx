@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import RadialLauncher from '../components/RadialLauncher';
 import { topics } from '../data/topics';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.svg';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -11,6 +12,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <header className="dashboard__header">
+        <img src={logo} alt="" className="dashboard__logo" />
         <div>
           <p className="dashboard__eyebrow">Your Learning Wheel</p>
           <h1 className="dashboard__title">Welcome back, {firstName}</h1>

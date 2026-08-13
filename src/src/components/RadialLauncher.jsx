@@ -100,8 +100,8 @@ export default function RadialLauncher({ topics }) {
       <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="radial-launcher__svg" role="img" aria-label="Topic launcher wheel">
         <defs>
           <radialGradient id="hubGlow" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#3a2410" />
-            <stop offset="100%" stopColor="#140d08" />
+            <stop offset="0%" stopColor="#1c2a4a" />
+            <stop offset="100%" stopColor="#0a121c" />
           </radialGradient>
           <filter id="segGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="6" result="blur" />
@@ -241,7 +241,7 @@ export default function RadialLauncher({ topics }) {
               />
             );
           })}
-          <circle cx={CENTER} cy={CENTER} r={HUB_R} fill="url(#hubGlow)" stroke="#ff8a3d" strokeWidth="1.5" />
+          <circle cx={CENTER} cy={CENTER} r={HUB_R} fill="url(#hubGlow)" stroke="#2fc6c4" strokeWidth="1.5" />
           <text x={CENTER} y={CENTER - 14} className="radial-launcher__hub-icon">
             🎓
           </text>

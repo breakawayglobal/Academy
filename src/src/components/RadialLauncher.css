@@ -78,7 +78,7 @@
 }
 
 .radial-launcher__hub-percent {
-  fill: #ff8a3d;
+  fill: var(--brand-teal);
   font-size: 24px;
   font-weight: 800;
   text-anchor: middle;
@@ -147,8 +147,8 @@
 
 .radial-launcher__blip:nth-child(even) line,
 .radial-launcher__blip:nth-child(even) circle {
-  stroke: #ff8a3d;
-  fill: #ff8a3d;
+  stroke: #4fe0b8;
+  fill: #4fe0b8;
 }
 
 .radial-launcher__blip line {
@@ -167,7 +167,7 @@
 
 .radial-launcher__hub-pulse {
   fill: none;
-  stroke: rgba(255, 138, 61, 0.25);
+  stroke: rgba(84, 104, 216, 0.3);
   stroke-width: 1;
   animation: radial-hub-pulse 3.5s ease-in-out infinite;
 }
