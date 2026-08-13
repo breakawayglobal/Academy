@@ -110,19 +110,7 @@ export default function RadialLauncher({ topics }) {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <radialGradient id="auraBlue" cx="35%" cy="30%" r="60%">
-            <stop offset="0%" stopColor="#2dd4ff" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#2dd4ff" stopOpacity="0" />
-          </radialGradient>
-          <radialGradient id="auraOrange" cx="70%" cy="75%" r="60%">
-            <stop offset="0%" stopColor="#ff8a3d" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#ff8a3d" stopOpacity="0" />
-          </radialGradient>
         </defs>
-
-        {/* ambient dual-tone glow */}
-        <circle cx={CENTER} cy={CENTER} r={R_BLIP + 20} fill="url(#auraBlue)" style={{ pointerEvents: 'none' }} />
-        <circle cx={CENTER} cy={CENTER} r={R_BLIP + 20} fill="url(#auraOrange)" style={{ pointerEvents: 'none' }} />
 
         {/* sci-fi bezel: static ring + fine ticks */}
         <circle
