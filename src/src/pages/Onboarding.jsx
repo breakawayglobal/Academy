@@ -47,7 +47,7 @@ export default function Onboarding() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${session.access_token}`,
         },
-        body: JSON.stringify({ name: fullName.trim() }),
+        body: JSON.stringify({ name: fullName.trim().split(/\s+/)[0] }),
       });
       if (res.ok) {
         const { url } = await res.json();
