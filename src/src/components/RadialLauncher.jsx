@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getTopicProgress } from '../utils/progress';
 import './RadialLauncher.css';
 
-const SIZE = 600;
+const SIZE = 680;
 const CENTER = SIZE / 2;
 const R_TICK = 284;
 const R_OUTER = 268;
@@ -12,6 +12,16 @@ const R_PROGRESS_OUT = 262;
 const R_PROGRESS_IN = 252;
 const HUB_R = 116;
 const GAP_DEG = 3;
+
+const R_DASH = 296;
+const R_BEZEL = 306;
+const R_MINOR_TICK_IN = 300;
+const R_MINOR_TICK_OUT = 306;
+const R_MAJOR_TICK_IN = 296;
+const R_MAJOR_TICK_OUT = 312;
+const R_BLIP = 320;
+
+const BLIP_ANGLES = [25, 145, 205, 335];
 
 const toRad = (deg) => ((deg - 90) * Math.PI) / 180;
 
@@ -46,6 +56,20 @@ export default function RadialLauncher({ topics }) {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(null);
   const step = 360 / topics.length;
+
+  const bezelTicks = useMemo(() => {
+    const ticks = [];
+    for (let deg = 0; deg < 360; deg += 6) {
+      const isMajor = deg % 30 === 0;
+      ticks.push({
+        deg,
+        isMajor,
+        inner: isMajor ? R_MAJOR_TICK_IN : R_MINOR_TICK_IN,
+        outer: isMajor ? R_MAJOR_TICK_OUT : R_MINOR_TICK_OUT,
+      });
+    }
+    return ticks;
+  }, []);
 
   const segments = useMemo(
     () =>
@@ -86,7 +110,63 @@ export default function RadialLauncher({ topics }) {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+          <radialGradient id="auraBlue" cx="35%" cy="30%" r="60%">
+            <stop offset="0%" stopColor="#2dd4ff" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#2dd4ff" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="auraOrange" cx="70%" cy="75%" r="60%">
+            <stop offset="0%" stopColor="#ff8a3d" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#ff8a3d" stopOpacity="0" />
+          </radialGradient>
         </defs>
+
+        {/* ambient dual-tone glow */}
+        <circle cx={CENTER} cy={CENTER} r={R_BLIP + 20} fill="url(#auraBlue)" style={{ pointerEvents: 'none' }} />
+        <circle cx={CENTER} cy={CENTER} r={R_BLIP + 20} fill="url(#auraOrange)" style={{ pointerEvents: 'none' }} />
+
+        {/* sci-fi bezel: static ring + fine ticks */}
+        <circle
+          cx={CENTER}
+          cy={CENTER}
+          r={R_BEZEL}
+          className="radial-launcher__bezel-ring"
+          style={{ pointerEvents: 'none' }}
+        />
+        <g className="radial-launcher__bezel-ticks" style={{ pointerEvents: 'none' }}>
+          {bezelTicks.map((t) => {
+            const p1 = polar(t.inner, t.deg);
+            const p2 = polar(t.outer, t.deg);
+            return (
+              <line
+                key={`bezel-${t.deg}`}
+                x1={p1.x}
+                y1={p1.y}
+                x2={p2.x}
+                y2={p2.y}
+                className={t.isMajor ? 'is-major' : 'is-minor'}
+              />
+            );
+          })}
+        </g>
+
+        {/* slow-rotating dashed HUD ring */}
+        <g className="radial-launcher__spin" style={{ pointerEvents: 'none' }}>
+          <circle cx={CENTER} cy={CENTER} r={R_DASH} className="radial-launcher__dash-ring" />
+        </g>
+
+        {/* sensor blips */}
+        <g className="radial-launcher__blips" style={{ pointerEvents: 'none' }}>
+          {BLIP_ANGLES.map((deg, i) => {
+            const inner = polar(R_BEZEL, deg);
+            const outer = polar(R_BLIP, deg);
+            return (
+              <g key={`blip-${deg}`} className="radial-launcher__blip" style={{ animationDelay: `${i * 0.6}s` }}>
+                <line x1={inner.x} y1={inner.y} x2={outer.x} y2={outer.y} />
+                <circle cx={outer.x} cy={outer.y} r="3" />
+              </g>
+            );
+          })}
+        </g>
 
         {/* outer tick ring */}
         {segments.map((s, i) => (
@@ -157,6 +237,22 @@ export default function RadialLauncher({ topics }) {
 
         {/* hub */}
         <g className="radial-launcher__hub" onClick={() => navigate('/')}>
+          <circle cx={CENTER} cy={CENTER} r={HUB_R + 22} className="radial-launcher__hub-pulse" />
+          <circle cx={CENTER} cy={CENTER} r={HUB_R + 10} className="radial-launcher__hub-ring" />
+          {[0, 90, 180, 270].map((deg) => {
+            const p1 = polar(HUB_R + 4, deg);
+            const p2 = polar(HUB_R + 14, deg);
+            return (
+              <line
+                key={`crosshair-${deg}`}
+                x1={p1.x}
+                y1={p1.y}
+                x2={p2.x}
+                y2={p2.y}
+                className="radial-launcher__hub-crosshair"
+              />
+            );
+          })}
           <circle cx={CENTER} cy={CENTER} r={HUB_R} fill="url(#hubGlow)" stroke="#ff8a3d" strokeWidth="1.5" />
           <text x={CENTER} y={CENTER - 14} className="radial-launcher__hub-icon">
             🎓

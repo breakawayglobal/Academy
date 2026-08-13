@@ -19,7 +19,7 @@
   stroke-width: 2;
   cursor: pointer;
   transition: fill 0.2s ease, filter 0.2s ease, transform 0.2s ease;
-  transform-origin: 300px 300px;
+  transform-origin: 340px 340px;
 }
 
 .radial-launcher__wedge.is-hovered {
@@ -81,4 +81,102 @@
   dominant-baseline: middle;
   font-family: 'Inter', system-ui, sans-serif;
   pointer-events: none;
+}
+
+.radial-launcher__bezel-ring {
+  fill: none;
+  stroke: rgba(45, 212, 255, 0.18);
+  stroke-width: 1;
+}
+
+.radial-launcher__bezel-ticks line {
+  stroke: rgba(154, 159, 174, 0.35);
+  stroke-width: 1;
+}
+
+.radial-launcher__bezel-ticks line.is-major {
+  stroke: rgba(45, 212, 255, 0.5);
+  stroke-width: 1.5;
+}
+
+.radial-launcher__spin {
+  transform-origin: 340px 340px;
+  animation: radial-spin 50s linear infinite;
+}
+
+.radial-launcher__dash-ring {
+  fill: none;
+  stroke: rgba(45, 212, 255, 0.4);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 14;
+}
+
+@keyframes radial-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.radial-launcher__blip {
+  opacity: 0.5;
+  animation: radial-blip-pulse 3s ease-in-out infinite;
+}
+
+.radial-launcher__blip:nth-child(odd) line,
+.radial-launcher__blip:nth-child(odd) circle {
+  stroke: #2dd4ff;
+  fill: #2dd4ff;
+}
+
+.radial-launcher__blip:nth-child(even) line,
+.radial-launcher__blip:nth-child(even) circle {
+  stroke: #ff8a3d;
+  fill: #ff8a3d;
+}
+
+.radial-launcher__blip line {
+  stroke-width: 1;
+}
+
+@keyframes radial-blip-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.radial-launcher__hub-pulse {
+  fill: none;
+  stroke: rgba(255, 138, 61, 0.25);
+  stroke-width: 1;
+  animation: radial-hub-pulse 3.5s ease-in-out infinite;
+}
+
+.radial-launcher__hub-ring {
+  fill: none;
+  stroke: rgba(45, 212, 255, 0.3);
+  stroke-width: 1;
+}
+
+.radial-launcher__hub-crosshair {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1.5;
+}
+
+@keyframes radial-hub-pulse {
+  0%,
+  100% {
+    r: 138;
+    opacity: 0.5;
+  }
+  50% {
+    r: 150;
+    opacity: 0;
+  }
 }
