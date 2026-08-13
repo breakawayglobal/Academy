@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import welcomeAudio from '../assets/welcome.mp3';
 import './Login.css';
 
 export default function Login() {
@@ -37,7 +38,10 @@ export default function Login() {
     if (mode === 'sign-up') {
       setMessage('Check your email to confirm your account, then sign in.');
       setMode('sign-in');
+      return;
     }
+
+    new Audio(welcomeAudio).play().catch(() => {});
   }
 
   return (
