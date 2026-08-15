@@ -3,6 +3,7 @@ import RadialLauncher from '../components/RadialLauncher';
 import { topics } from '../data/topics';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.svg';
+import AppNav from '../components/AppNav';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -11,6 +12,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
+      <AppNav />
       <header className="dashboard__header">
         <img src={logo} alt="" className="dashboard__logo" />
         <div>

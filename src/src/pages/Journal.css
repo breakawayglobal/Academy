@@ -1,0 +1,194 @@
+.journal {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.journal__header {
+  text-align: center;
+}
+
+.journal__eyebrow {
+  color: var(--brand-teal);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.journal__title {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 4px 0 0;
+  color: #f4f5f7;
+}
+
+.journal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 14px;
+  background: #171a24;
+  border: 1px solid #262b3a;
+}
+
+.journal__form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.journal__form-row input,
+.journal__form-row select,
+.journal__form textarea {
+  flex: 1;
+  min-width: 120px;
+  background: #0b0c10;
+  border: 1px solid #262b3a;
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: #f4f5f7;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.journal__date-field {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  color: #9a9fae;
+}
+
+.journal__date-field input {
+  width: 100%;
+}
+
+.journal__error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.journal__submit {
+  align-self: flex-start;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--brand-gradient);
+  color: #0b0c10;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.journal__submit:disabled {
+  opacity: 0.6;
+}
+
+.journal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.journal__hint {
+  color: #9a9fae;
+  text-align: center;
+  font-size: 13px;
+}
+
+.journal__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #171a24;
+  border: 1px solid #262b3a;
+  flex-wrap: wrap;
+}
+
+.journal__row-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.journal__side {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.journal__side--long {
+  background: rgba(79, 224, 184, 0.15);
+  color: #4fe0b8;
+}
+
+.journal__side--short {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff6b6b;
+}
+
+.journal__symbol {
+  font-weight: 700;
+  color: #f4f5f7;
+}
+
+.journal__meta {
+  font-size: 12px;
+  color: #9a9fae;
+}
+
+.journal__playbook-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(84, 104, 216, 0.18);
+  color: #8fa0f0;
+}
+
+.journal__row-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.journal__pnl {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.journal__pnl.is-positive {
+  color: #4fe0b8;
+}
+
+.journal__pnl.is-negative {
+  color: #ff6b6b;
+}
+
+.journal__delete {
+  background: none;
+  border: 1px solid #262b3a;
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: #9a9fae;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.journal__delete:hover {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}

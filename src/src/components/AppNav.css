@@ -1,0 +1,30 @@
+.app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 6px;
+  border-radius: 12px;
+  background: #171a24;
+  border: 1px solid #262b3a;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.app-nav__link {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9a9fae;
+  text-decoration: none;
+}
+
+.app-nav__link:hover {
+  color: #f4f5f7;
+}
+
+.app-nav__link.is-active {
+  background: var(--brand-gradient);
+  color: #0b0c10;
+}
