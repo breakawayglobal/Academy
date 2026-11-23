@@ -7,6 +7,7 @@ import Journal from './pages/Journal';
 import Analytics from './pages/Analytics';
 import Playbooks from './pages/Playbooks';
 import AIAssistant from './pages/AIAssistant';
+import Backoffice from './pages/Backoffice';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
@@ -17,6 +18,7 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/backoffice" element={<Backoffice />} />
           <Route
             path="/"
             element={

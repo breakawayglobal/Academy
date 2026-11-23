@@ -2,7 +2,6 @@
   "rewrites": [
     { "source": "/challenge", "destination": "https://www.visamclub.com/challenge" },
     { "source": "/challenge/:path*", "destination": "https://www.visamclub.com/challenge/:path*" },
-    { "source": "/api/challenge-register", "destination": "https://www.visamclub.com/api/challenge-register" },
     { "source": "/privacy-policy.html", "destination": "https://www.visamclub.com/privacy-policy.html" },
     { "source": "/assets/:path*", "destination": "https://www.visamclub.com/assets/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
