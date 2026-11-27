@@ -4,6 +4,7 @@ import { topics } from '../data/topics';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.svg';
 import AppNav from '../components/AppNav';
+import { BROKER_URL, BROKER_CTA } from '../data/broker';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -20,6 +21,14 @@ export default function Dashboard() {
           <h1 className="dashboard__title">Welcome back, {firstName}</h1>
         </div>
         <p className="dashboard__hint">Select a topic on the wheel to begin, or jump straight in below.</p>
+        <a
+          href={BROKER_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="dashboard__broker"
+        >
+          {BROKER_CTA} ↗
+        </a>
         <p className="dashboard__account">
           {user?.email}
           <button type="button" className="dashboard__signout" onClick={signOut}>

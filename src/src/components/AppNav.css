@@ -24,6 +24,10 @@
   color: #f4f5f7;
 }
 
+.app-nav__link--external {
+  color: var(--brand-teal);
+}
+
 .app-nav__link.is-active {
   background: var(--brand-gradient);
   color: #0b0c10;

@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { BROKER_URL, BROKER_LABEL } from '../data/broker';
 import './AppNav.css';
 
 const LINKS = [
@@ -22,6 +23,14 @@ export default function AppNav() {
           {link.label}
         </NavLink>
       ))}
+      <a
+        href={BROKER_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="app-nav__link app-nav__link--external"
+      >
+        {BROKER_LABEL} ↗
+      </a>
     </nav>
   );
 }

@@ -43,6 +43,23 @@
   margin: 0;
 }
 
+.dashboard__broker {
+  display: inline-block;
+  align-self: center;
+  margin: 4px auto 0;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--brand-gradient);
+  color: #0b0c10;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dashboard__broker:hover {
+  filter: brightness(1.08);
+}
+
 .dashboard__account {
   display: flex;
   align-items: center;
