@@ -41,13 +41,20 @@
   filter: url(#segGlow) drop-shadow(0 0 14px var(--accent));
 }
 
-.radial-launcher__tick {
-  fill: #5b6273;
-  font-size: 13px;
-  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+.radial-launcher__step-badge {
+  fill: var(--accent);
+  stroke: #0b0c10;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+.radial-launcher__step-num {
+  fill: #0b0c10;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'Inter', system-ui, sans-serif;
   text-anchor: middle;
-  dominant-baseline: middle;
-  pointer-events: none;
+  dominant-baseline: central;
 }
 
 .radial-launcher__icon {

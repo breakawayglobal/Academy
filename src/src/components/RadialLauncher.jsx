@@ -6,6 +6,7 @@ import './RadialLauncher.css';
 const SIZE = 680;
 const CENTER = SIZE / 2;
 const R_TICK = 284;
+const STEP_BADGE_R = 15;
 const R_OUTER = 268;
 const R_INNER = 138;
 const R_PROGRESS_OUT = 262;
@@ -156,17 +157,22 @@ export default function RadialLauncher({ topics }) {
           })}
         </g>
 
-        {/* outer tick ring */}
-        {segments.map((s, i) => (
-          <text
-            key={`tick-${s.topic.id}`}
-            x={polar(R_TICK, s.mid).x}
-            y={polar(R_TICK, s.mid).y}
-            className="radial-launcher__tick"
-          >
-            {i + 1}
-          </text>
-        ))}
+        {/* step number badges: show the order to work through the wheel */}
+        {segments.map((s, i) => {
+          const p = polar(R_TICK, s.mid);
+          return (
+            <g
+              key={`tick-${s.topic.id}`}
+              className="radial-launcher__step"
+              style={{ '--accent': s.topic.color, pointerEvents: 'none' }}
+            >
+              <circle cx={p.x} cy={p.y} r={STEP_BADGE_R} className="radial-launcher__step-badge" />
+              <text x={p.x} y={p.y} className="radial-launcher__step-num">
+                {i + 1}
+              </text>
+            </g>
+          );
+        })}
 
         {/* base segment wedges */}
         {segments.map((s) => (
